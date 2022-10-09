@@ -5,10 +5,55 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Lab_3
-{
-    class Program
+{ //добавить вложенный объект Production, вложенный класс Developer (разработчик – фио, id, отдел)
+    public static class StatisticOperation
     {
-        class List
+        public static int GetSumFirstLastElement(Program.List first)
+        {
+            return first.items.Max() + first.items.Min();
+        }
+
+        public static int GetDifferenceFirstLastElement(Program.List first)
+        {
+            return first.items.Max() - first.items.Min();
+        }
+
+        public static int GetAlementsAmount(Program.List first)
+        {
+            return first.items.Length;
+        }
+
+        public static bool DuplicateCheck(this Program.List first)
+        {
+            for (int i = 0; i < first.items.Length; i++)
+            {
+                for (int j = 0; j < first.items.Length; j++)
+                {
+                    if (i == j) continue;
+
+                    if (first.items[i] == first.items[j]) return true;
+                }
+            }
+
+            return false;
+        }
+
+        public static int Letters(this string[] first)
+        {
+            int count = 0;
+            for (int i = 0; i < first.Length; i++)
+            {
+                char str = first[i][0];
+                if ((str >= 'A' && str <= 'Z') || (str >= 'А' && str <= 'Я'))
+                    count++;
+            }
+            return count;
+        }
+    }
+
+    public class Program
+    {
+        public class List
         {
             public static List operator *(List first, List second)
             {
@@ -95,7 +140,7 @@ namespace Lab_3
             a = 3 + a;
             a = 4 + a;
             a = 6 + a;
-            a = -1 + a;
+            a = 3 + a;
 
             b = 3 + b;
             b = 4 + b;
@@ -105,6 +150,12 @@ namespace Lab_3
             bool res = a == b;
 
             var test = a * b;
+
+            a.DuplicateCheck();
+
+            string[] strArr = { "danila", "nikita", "artyom" };
+
+            int res1 = strArr.Letters();
 
             --a;
 
