@@ -7,7 +7,7 @@ class Lab_2
     {
         //const
         private const int Constantine = 1;
-
+        
         //Constructors
         public Product(string name, int UPC, string producer, int price, int storTime, int amount)
         {
@@ -50,7 +50,7 @@ class Lab_2
         {
             countOfUsers = 0;
         }
-
+        
         //Private constructor + ref && out
         private Product(ref int a, out int b)
         {
@@ -199,7 +199,6 @@ class Lab_2
             if (ProductArr[i].GetSetname == userStr) Console.Write($"{ProductArr[i].ToString()}\n"); //список товаров для заданного наименования
         }
         ////////////////////////////////////////////////////////////////////////////
-        ///
         Console.Write("\n\n");
 
         int userPrice = 100;
