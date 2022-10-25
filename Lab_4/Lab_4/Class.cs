@@ -86,6 +86,11 @@ namespace Lab_04
             this.servicePrice = servicePrice;
         }
 
+        public override string ToString()
+        {
+            return Title + " " + DateOfSignature.ToString("MM/dd/yyyy") + " " + Name + " " + Lastname + " " + NameOfOrganization + " " + servicePrice + "\n--------------------------------------\n";
+        }
+
         public override void Info()
         {
             Console.WriteLine("-----------" + Title + "-----------\n" + "Дата заключения: " + DateOfSignature.ToString("MM/dd/yyyy") + "\n" + "Клиент: " + Name + Lastname + "\n" + "Организация: " + NameOfOrganization + "\n" + "Итоговая стоимость: " + servicePrice);
@@ -107,6 +112,10 @@ namespace Lab_04
         {
             this.servicePrice = servicePrice;
         }
+        public override string ToString()
+        {
+            return Title + " " + DateOfSignature.ToString("MM/dd/yyyy") + " " + Name + " " + Lastname + " " + NameOfOrganization + " " + servicePrice + "\n--------------------------------------\n";
+        }
         public override void Info()
         {
             Console.WriteLine("-----------" + Title + "-----------\n" + "Дата заключения: " + DateOfSignature.ToString("MM/dd/yyyy") + "\n" + "Клиент: " + Name + Lastname + "\n" + "Организация: " + NameOfOrganization + "\n" + "Итоговая стоимость: " + servicePrice);
@@ -126,7 +135,10 @@ namespace Lab_04
         {
             this.totalPrice = totalPrice;
         }
-
+        public override string ToString()
+        {
+            return Title + " " + DateOfSignature.ToString("MM/dd/yyyy") + " " + Name + " " + Lastname + " " + NameOfOrganization + " " + totalPrice + "\n--------------------------------------\n";
+        }
         public override void Info()
         {
             Console.WriteLine("-----------" + Title + "-----------\n" + "Дата заключения: " + DateOfSignature.ToString("MM/dd/yyyy") + "\n" + "Клиент: " + Name + Lastname + "\n" + "Организация: " + NameOfOrganization + "\n" + "Итоговая стоимость: " + totalPrice);
