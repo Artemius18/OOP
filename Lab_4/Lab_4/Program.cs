@@ -31,6 +31,14 @@ namespace Lab_04
 
             ((IDocument)seconddoc).Info();
             Console.WriteLine();
+
+
+            //создание массива
+            Document[] mas = { firsdoc, seconddoc, thirddoc };
+            for (int i = 0; i < mas.Length; i++)
+            {
+                Printer.IAmPrinting(mas[i]);
+            }
         }
     }
 }
