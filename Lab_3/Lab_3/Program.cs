@@ -27,13 +27,13 @@ namespace Lab_3
 
 
             bool res = a == b;
-            Console.WriteLine("Проверка на равенство строк: " + res); //проверка на равенство
+            Console.WriteLine("Проверка на равенство: " + res); 
 
             var test = a * b; //объединение двух списков
 
             Console.WriteLine("Проверка на повторяющиеся элементы: " + a.DuplicateCheck());
 
-            string[] strArr = { "Danila", "nikita", "artyom" };
+            string[] strArr = { "Danila", "Nikita", "artyom" };
             //int res1 = strArr.Letters();
             Console.WriteLine("Кол-во слов с заглавной буквы: " + strArr.Letters());
 
