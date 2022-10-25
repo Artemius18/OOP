@@ -19,6 +19,12 @@ namespace Lab_04
             Document firsdoc = first_waybill;
             Document seconddoc = first_receipt;
 
+            Document thirddoc = first_check as Check;
+            Console.WriteLine(thirddoc is Check);
+            Console.WriteLine(firsdoc is Document);
+            Console.WriteLine();
+
+
             //вызов одноименных методов
             firsdoc.Info();
             Console.WriteLine();
