@@ -16,7 +16,15 @@ namespace Lab_04
             first_waybill.Info();
 
             Console.WriteLine();
+            Document firsdoc = first_waybill;
+            Document seconddoc = first_receipt;
 
+            //вызов одноименных методов
+            firsdoc.Info();
+            Console.WriteLine();
+
+            ((IDocument)seconddoc).Info();
+            Console.WriteLine();
         }
     }
 }
