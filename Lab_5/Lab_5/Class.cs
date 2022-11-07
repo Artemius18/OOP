@@ -1,0 +1,196 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace Lab06
+{
+    enum Doc
+    {
+        Receipt = 1, Waybill, Check  //добавлена структура и перечисление
+    }
+
+
+    struct Information
+    {
+        public string document;
+        public string client;
+        public string organization;
+    }
+
+
+    interface IDocument
+    {
+        void Info();
+    }
+
+
+    public abstract partial class Document //один из классов partial
+    {
+        private readonly int id;
+        private string title;
+        private DateTime dateOfSignature;
+        private Client client;
+        private Organization organization;
+        public Document(string title, DateTime dateOfSignature, Client client, Organization organization)
+        {
+            id = (int)title.GetHashCode() + (int)dateOfSignature.GetHashCode();
+            this.title = title;
+            this.dateOfSignature = dateOfSignature;
+            this.client = client;
+            this.organization = organization;
+        }
+        public string Name
+        {
+            get => client.Name;
+            set => client.Name = value;
+        }
+        public string Lastname
+        {
+            get => client.Lastname;
+            set => client.Lastname = value;
+
+        }
+        public string NameOfOrganization
+        {
+            get => organization.NameOfOrganization;
+            set => organization.NameOfOrganization = value;
+        }
+        public string Title
+        {
+            get => title;
+            set => title = value;
+        }
+        public DateTime DateOfSignature
+        {
+            get => dateOfSignature;
+            set => dateOfSignature = value;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+                return false;
+            if (obj.GetType() != this.GetType())
+                return false;
+            return this.Title == ((Document)obj).Title;
+        }
+        public override int GetHashCode()
+        {
+            int hash = 47, d = 32;
+            string a = Convert.ToString(Title);
+            hash = string.IsNullOrEmpty(a) ? 0 : Title.GetHashCode();
+            hash = (hash * 47) + d.GetHashCode();
+            return hash;
+        }
+
+        public override string ToString()
+        {
+            return Title + " " + DateOfSignature.ToString("MM/dd/yyyy") + " " + Name + " " + Lastname + " " + NameOfOrganization + " ";
+        }
+
+        public abstract void Info();
+        virtual public int GetTotalPrice() { return 0; }
+    }
+    sealed public class Receipt : Document, IDocument
+    {
+        private int servicePrice;
+
+        public Receipt(string title, DateTime dateOfSignature, Client client, Organization organization, int servicePrice)
+            : base(title, dateOfSignature, client, organization)
+        {
+            this.servicePrice = servicePrice;
+        }
+        public override string ToString()
+        {
+            return base.ToString() + servicePrice;
+        }
+        public override void Info()
+        {
+            Console.WriteLine("-----------" + Title + "-----------\n" + "Дата заключения: " + DateOfSignature.ToString("MM/dd/yyyy") + "\n" + "Клиент: " + Name + Lastname + "\n" + "Организация: " + NameOfOrganization + "\n" + "Итоговая стоимость: " + servicePrice);
+        }
+        override public int GetTotalPrice()
+        {
+            return servicePrice;
+        }
+    }
+    sealed public class Waybill : Document, IDocument
+    {
+        private int servicePrice;
+        public Waybill(string title, DateTime dateOfSignature, Client client, Organization organization, int servicePrice)
+           : base(title, dateOfSignature, client, organization)
+        {
+            this.servicePrice = servicePrice;
+        }
+        public override string ToString()
+        {
+            return base.ToString() + servicePrice;
+        }
+        public override void Info()
+        {
+            Console.WriteLine("-----------" + Title + "-----------\n" + "Дата заключения: " + DateOfSignature.ToString("MM/dd/yyyy") + "\n" + "Клиент: " + Name + Lastname + "\n" + "Организация: " + NameOfOrganization + "\n" + "Итоговая стоимость: " + servicePrice);
+        }
+        override public int GetTotalPrice()
+        {
+            return servicePrice;
+        }
+    }
+    sealed public class Check : Document, IDocument
+    {
+        private int totalPrice;
+        public Check(string title, DateTime dateOfSignature, Client client, Organization organization, int totalPrice)
+               : base(title, dateOfSignature, client, organization)
+        {
+            this.totalPrice = totalPrice;
+        }
+        public override string ToString()
+        {
+            return base.ToString() + totalPrice;
+        }
+        public override void Info()
+        {
+            Console.WriteLine("-----------" + Title + "-----------\n" + "Дата заключения: " + DateOfSignature.ToString("MM/dd/yyyy") + "\n" + "Клиент: " + Name + Lastname + "\n" + "Организация: " + NameOfOrganization + "\n" + "Итоговая стоимость: " + totalPrice);
+        }
+        override public int GetTotalPrice()
+        {
+            return totalPrice;
+        }
+
+    }
+    public class Client
+    {
+        private string name;
+        private string lastname;
+
+        public Client(string name, string lastname)
+        {
+            this.name = name;
+            this.lastname = lastname;
+
+        }
+        public string Name
+        {
+            get => name;
+            set => name = value;
+        }
+        public string Lastname
+        {
+            get => lastname;
+            set => lastname = value;
+        }
+    }
+    public class Organization
+    {
+        private string nameOfOrganization;
+        public Organization(string nameOfOrganization)
+        {
+            this.nameOfOrganization = nameOfOrganization;
+        }
+        public string NameOfOrganization
+        {
+            get => nameOfOrganization;
+            set => nameOfOrganization = value;
+        }
+    }
+
+
+     
+}
