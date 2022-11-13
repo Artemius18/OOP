@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Lab06
+namespace Lab_5
 {
     enum Doc
     {
@@ -272,9 +272,16 @@ namespace Lab06
                     item.Info();
         }
 
-
+       
 
 
     }
 
+     public class BookkeepingController
+        {
+            public void Show(Bookkeeping lib) { lib.ShowList(); }
+            public int Price(Bookkeeping lib, string name) { int a = lib.GetWaybillPrice(name); return a; }
+            public int Count(Bookkeeping lib) { int a = lib.GetCheckCount(); return a; }
+            public void Get(Bookkeeping lib, DateTime firstDate, DateTime lastDate) { lib.GetDocuments(firstDate, lastDate); }
+        }
 }

@@ -2,7 +2,7 @@
 using System.Linq;
 
 
-namespace Lab06
+namespace Lab_5
 {
     // Квитанция, Накладная, Документ, Чек, Дата, Организация.
     //Собрать Бухгалтерию.
@@ -17,6 +17,9 @@ namespace Lab06
             Receipt receipt = new Receipt("Квитанция об оплате", new DateTime(2022, 10, 11), client, new Organization("Netflix"), 49);
 
             Check check = new Check("Чек", new DateTime(2020, 10, 15), client, new Organization("McDonalds"), 5);
+            Check check2 = new Check("Чек", new DateTime(2020, 10, 15), client, new Organization("McDonalds"), 5);
+
+
 
             Waybill waybill2 = new Waybill("Накладная на машину", new DateTime(2022, 11, 11), client, new Organization("BMW"), 7800);
             Waybill waybill3 = new Waybill("Накладная на машину", new DateTime(2022, 11, 11), client, new Organization("BMW"), 7800);
@@ -25,16 +28,18 @@ namespace Lab06
 
 
             Bookkeeping bkkeeping = new Bookkeeping();
-           
+            
             bkkeeping.AddReceipt(receipt);
             bkkeeping.AddWaybill(waybill);
             bkkeeping.AddCheck(check);
+            bkkeeping.AddCheck(check2);
 
             bkkeeping.AddWaybill(waybill2);
             bkkeeping.AddWaybill(waybill3);
             bkkeeping.AddWaybill(waybill4);
             bkkeeping.AddWaybill(waybill5);
 
+            
             bkkeeping.ShowList();
             Console.WriteLine();
 
@@ -43,7 +48,10 @@ namespace Lab06
 
             bkkeeping.GetDocuments(new DateTime(2021, 11, 10), new DateTime(2022, 11, 10));
             Console.WriteLine();
-           
+
+
+            BookkeepingController controll = new BookkeepingController();
+            Console.WriteLine("Количество чеков: {0}", controll.Count(bkkeeping));
 
             Console.ReadKey();
         }
