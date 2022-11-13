@@ -192,5 +192,89 @@ namespace Lab06
     }
 
 
-     
+    public class Bookkeeping
+    {
+        List<Receipt> receipts = new List<Receipt>();
+        List<Waybill> waybills = new List<Waybill>();
+        List<Check> checks = new List<Check>();
+
+        public Receipt this[int index]
+        {
+            get
+            {
+                if (index > receipts.Count)
+                {
+                    Console.WriteLine("Превышен максимальный индекс списка квитанций");
+                    return null;
+                }
+                return receipts[index];
+            }
+            set
+            {
+                if (index > receipts.Count)
+                    Console.WriteLine("Элемента с таким индексом не существует");
+                else
+                    receipts[index] = value;
+            }
+        }
+        public void AddReceipt(Receipt a) { receipts.Add(a); }
+        public void AddWaybill(Waybill a) { waybills.Add(a); }
+        public void AddCheck(Check a) { checks.Add(a); }
+        public void DelReceipt(Receipt a) { receipts.Remove(a); }
+        public void DelWaybill(Waybill a) { waybills.Remove(a); }
+        public void DelCheck(Check a) { checks.Remove(a); }
+
+        public void ShowList()
+        {
+            Console.WriteLine("List of Receipts: ");
+            foreach (Receipt item in receipts)
+            {
+                Console.WriteLine(item.ToString());
+            }
+            Console.WriteLine("List of Waybills: ");
+            foreach (Waybill item in waybills)
+            {
+                Console.WriteLine(item.ToString());
+            }
+            Console.WriteLine("List of Checks: ");
+            foreach (Check item in checks)
+            {
+                Console.WriteLine(item.ToString());
+            }
+        }
+        public int GetWaybillPrice(string name)
+        {
+            int price = 0;
+            foreach (Waybill item in waybills)
+            {
+                if (item.Title == name)
+                    price += item.GetTotalPrice();
+            }
+            return price;
+        }
+        public int GetCheckCount()
+        {
+            return checks.Count;
+        }
+      
+
+        public void GetDocuments(DateTime date1, DateTime date2)
+        {
+            Console.WriteLine($"За период с {date1} по {date2} имеются следующие документы: ");
+            foreach (Receipt item in receipts)
+                if (item.DateOfSignature > date1 && item.DateOfSignature < date2)
+                    item.Info();
+            foreach (Waybill item in waybills)
+                if (item.DateOfSignature > date1 && item.DateOfSignature < date2)
+                    item.Info();
+            foreach (Check item in checks)
+                if (item.DateOfSignature > date1 && item.DateOfSignature < date2)
+                    item.Info();
+        }
+
+
+
+
+    }
+
 }
