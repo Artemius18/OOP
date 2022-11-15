@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
-
+using System.Diagnostics;
 namespace Lab_6
 {
     enum Doc
@@ -36,8 +35,14 @@ namespace Lab_6
         }
         public string Name
         {
-            get => client.Name;
-            set => client.Name = value;
+            get
+            {  
+                return client.Name;
+            }
+            set
+            {
+                client.Name = value;
+            }
         }
         public string Lastname
         {
@@ -182,13 +187,29 @@ namespace Lab_6
         }
         public string Name
         {
-            get => name;
-            set => name = value;
+            get
+            {
+                Debug.Assert(name.Length != 0, "Client firstname is empty");
+                return name;
+            }
+            set
+            {
+                
+                name = value;
+               
+            }
         }
         public string Lastname
         {
-            get => lastname;
-            set => lastname = value;
+            get
+            {
+                Debug.Assert(lastname.Length != 0, "Client firstname is empty");
+                return lastname;
+            }
+            set 
+            { 
+                lastname = value; 
+            }
         }
     }
     public class Organization
