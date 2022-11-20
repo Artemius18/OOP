@@ -101,6 +101,34 @@ namespace Lab_7
     {
         static void Main(string[] args)
         {
+
+
+            try
+            {
+                string path = @"D:\BSTU\2course\OOP\Lab_7\Lab_7\test.txt";
+            
+                CollectionType<int> list = new CollectionType<int>();
+                CollectionType<short> list1 = new CollectionType<short>(2);
+                CollectionType<Document> tom = new CollectionType<Document>();
+
+                Document a = new Document("Накладная на машину", new DateTime(2012, 05, 12), "Каролина Мергель", "Пока не придумала", 7800);
+                Document b = new Document("Квитанция об оплате", new DateTime(2020, 05, 12), "Каролина Мергель", "Netflix", 49);
+                Document c = new Document("Check", new DateTime(2020 / 10 / 10), "Каролина Мергель", "В мире пультов", 20);
+                tom.Add(a);
+                tom.Add(b);
+                tom.Add(c);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+            }
+            finally
+            {
+                Console.WriteLine("Yaaay");
+                Console.ReadKey();
+            }
+
         }
     }
 }
