@@ -49,8 +49,23 @@ namespace Lab_7
         {
             collection.RemoveAt(pos);
         }
-        
 
+
+        public void ToFile(string path)
+        {
+            string[] text = new string[collection.Count];
+            for (int i = 0; i < collection.Count; i++)
+            {
+                text[i] = collection[i].ToString();
+            }
+            File.WriteAllLines(path, text);
+            Console.WriteLine("Data has been saved to txt file");
+        }
+
+        public void FromFile(string path)
+        {
+            Console.WriteLine(File.ReadAllText(path));
+        }
     }
     public class Document
     {
@@ -105,7 +120,7 @@ namespace Lab_7
 
             try
             {
-                string path = @"D:\BSTU\2course\OOP\Lab_7\Lab_7\test.txt";
+                string path = @"D:\BSTU\2course\1term\OOP\Lab_7\Lab_7\save.txt";
             
                 CollectionType<int> list = new CollectionType<int>();
                 CollectionType<short> list1 = new CollectionType<short>(2);
@@ -117,6 +132,9 @@ namespace Lab_7
                 tom.Add(a);
                 tom.Add(b);
                 tom.Add(c);
+
+                tom.ToFile(path);
+                tom.FromFile(path);
             }
             catch (Exception ex)
             {
@@ -125,7 +143,7 @@ namespace Lab_7
             }
             finally
             {
-                Console.WriteLine("Yaaay");
+                Console.WriteLine(":)");
                 Console.ReadKey();
             }
 
