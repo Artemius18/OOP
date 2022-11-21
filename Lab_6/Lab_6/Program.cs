@@ -18,8 +18,8 @@ namespace Lab_6
                     //a = 2 / a;
                     Client client = new Client("Артем", "Пшенко");
                     Organization org = new Organization("Какая-то организация");
-                    //Organization org_exc = new Organization("");
-                    //Organization org_e = new Organization("12345678901234567890123457890");
+                    Organization org_exc = new Organization("");
+                    Organization org_e = new Organization("12345678901234567890123457890");
                     Waybill waybill = new Waybill("Накладная на машину", new DateTime(2012, 05, 12), client, new Organization("Какая-то организация"), 7800);
                     Receipt receipt = new Receipt("Квитанция об оплате", new DateTime(2020, 05, 12), client, new Organization("Netflix"), 49);
                     Receipt receipt2 = new Receipt("Квитанция об оплате", new DateTime(2020, 05, 12), client, new Organization("Netflix"), 49);
@@ -62,6 +62,7 @@ namespace Lab_6
                     throw;
 
                 }
+                
                 catch (LongException e)
                 {
                     Console.WriteLine(e);
@@ -118,6 +119,16 @@ namespace Lab_6
                 Console.WriteLine("\n--------------------finally-------------------- \n:)");
             }
             Console.ReadKey();
+
+
         }
+    }
+
+    class Gen<T, G>
+    {
+        G ob;
+        T bo;
+        public Gen(G o) { ob = (int)0; }
+        public T GetOb() { return bo; }
     }
 }

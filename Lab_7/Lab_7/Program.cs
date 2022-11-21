@@ -12,7 +12,7 @@ namespace Lab_7
         void Show();
     }
 
-    public class CollectionType<T> : IFunction<T>
+    public class CollectionType<T> : IFunction<T> //where T : Document
     {
         public T element;
         public List<T> collection;
@@ -124,17 +124,19 @@ namespace Lab_7
             
                 CollectionType<int> list = new CollectionType<int>();
                 CollectionType<short> list1 = new CollectionType<short>(2);
-                CollectionType<Document> tom = new CollectionType<Document>();
+                CollectionType<Document> artyom = new CollectionType<Document>();
 
-                Document a = new Document("Накладная на машину", new DateTime(2012, 05, 12), "Каролина Мергель", "Пока не придумала", 7800);
-                Document b = new Document("Квитанция об оплате", new DateTime(2020, 05, 12), "Каролина Мергель", "Netflix", 49);
-                Document c = new Document("Check", new DateTime(2020 / 10 / 10), "Каролина Мергель", "В мире пультов", 20);
-                tom.Add(a);
-                tom.Add(b);
-                tom.Add(c);
+                Document a = new Document("Накладная на машину", new DateTime(2012, 05, 12), "Пшенко Артем", "Какая-то организация", 7800);
+                Document b = new Document("Квитанция об оплате", new DateTime(2020, 05, 12), "Пшенко Артем", "Netflix", 49);
+                Document c = new Document("Check", new DateTime(2020 / 10 / 10), "Пшенко Артем", "В мире пультов", 20);
+                artyom.Add(a);
+                artyom.Add(b);
+                artyom.Add(c);
 
-                tom.ToFile(path);
-                tom.FromFile(path);
+                artyom.ToFile(path);
+                //artyom.FromFile(path);
+
+                artyom.Show();
             }
             catch (Exception ex)
             {
