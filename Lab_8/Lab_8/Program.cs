@@ -1,14 +1,21 @@
 ﻿using System;
 
-class Program
-{
-    static void Main(string[] args)
-    {
-        Test? test = Hello;
 
-        test();
-        void Hello() => Console.WriteLine("Hello");
+namespace Lab_9
+{
+    class Program
+    {
+        public delegate void Del();
+
+        static void Main(string[] args)
+        {
+            Del del = null;
+            del();
+            void Hello() => Console.WriteLine("Hello");
+        }
+       
+
+
     }
 
-    delegate void Test();
 }
