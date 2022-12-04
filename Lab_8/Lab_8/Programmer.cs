@@ -12,6 +12,8 @@ namespace Lab_8
         public event List DeleteEvent;
         public event List MutateEvent;
         public List<string> list;
+
+
         public Programmer(List<string> list)
         {
             this.list = list;
@@ -24,7 +26,8 @@ namespace Lab_8
 
         public void Mutate()
         {
-            list = list.OrderBy(x => Guid.NewGuid().ToString()).ToList();
+            Random rand = new Random(); 
+            list = list.OrderBy(x => rand.Next()).ToList();
             MutateEvent?.Invoke("Произошло мутирование...");
 
         }

@@ -25,23 +25,9 @@ namespace Lab09
         }
 
 
-        public static string Upper(string str)
-        {
-            for (int i = 0; i < str.Length; i++)
-            {
-                str = str.Replace(str[i], char.ToUpper(str[i]));
-            }
-            return str;
-        }
+        public static string ToUpper(string str) => str.ToUpper();
 
 
-        public static string Lower(string str)
-        {
-            for (int i = 0; i < str.Length; i++)
-            {
-                str = str.Replace(str[i], char.ToLower(str[i]));
-            }
-            return str;
-        }
+        public static string ToLower(string str) => str.ToLower();
     }
 }
