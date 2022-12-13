@@ -1,5 +1,5 @@
 ﻿
-namespace Lab09
+namespace Lab_8
 {
     class StringRe
     {
@@ -15,7 +15,7 @@ namespace Lab09
 
         public static string AddToString(string str)
         {
-            return str += "символ";
+            return str += "строка";
         }
 
 
