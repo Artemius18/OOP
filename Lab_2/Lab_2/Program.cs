@@ -5,6 +5,12 @@ class Lab_2
 {
     public partial class Product
     {
+
+        //Для лабораторной 11
+        public void MethFor11Lab(int a, int b) 
+        {
+            Console.WriteLine(a + b);
+        }
         //const
         private const int Constantine = 1;
         

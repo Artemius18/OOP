@@ -24,7 +24,7 @@ namespace Lab_9
             foreach (T foo in players)
             {
                 yield return foo;
-                // yield return (Foo)foo;
+                
             }
         }
 

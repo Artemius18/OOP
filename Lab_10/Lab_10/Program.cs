@@ -88,7 +88,18 @@
 
 
 
+            Console.WriteLine("Собственный запрос:");
+            var own = products
+                .Where(p => p.Price < 20)
+                .OrderBy(p => p.Price)
+                .ThenByDescending(p => p)
+                .Where(p => p.Name.Contains('e'))
+                .Select(p => p);
+            foreach (var p in own) Console.WriteLine(p.Name + " - " + p.Price);
 
+            Console.WriteLine("\n---------------------------------------------------\n");
+
+            //Join
             Person2[] people =
                             {
                                 new Person2("Tom", "Microsoft"), new Person2("Sam", "Google"),

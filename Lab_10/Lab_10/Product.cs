@@ -31,7 +31,6 @@ namespace Lab_10
                 if (value >= 100000000000 && value < 1000000000000) upc = value;
             }
         }
-
         public Product(string name, long upc, string manufacturer, int price, DateTime shelflife, int number)
         {
             ++numberOfProducts;

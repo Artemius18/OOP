@@ -61,10 +61,14 @@ namespace Lab_8
             Console.WriteLine(test(str));
           
             Console.ReadKey();
+
+            //Operation sum = (x, y) => Console.WriteLine($"{x} + {y} = {x + y}");
+            //sum(1, 2);       // 1 + 2 = 3
+            //sum(22, 14);    // 22 + 14 = 36
         }
             delegate bool Predicate<in T>(T obj);
 
-
+          //delegate void Operation(int x, int y);
     }
 
 }
